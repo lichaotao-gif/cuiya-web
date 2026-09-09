@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>媒体报道 - 四川萃雅教育科技有限公司</title>
+<meta name="description" content="四川萃雅教育科技有限公司媒体报道与公司动态，涵盖缤果数字教材、缤果空中课堂、缤果数字非遗等产品的落地实践与行业观察。">
+<link rel="canonical" href="https://cuiya.cn/news.html">
+<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:site_name" content="四川萃雅教育科技">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cuiya.cn/news.html">
+<meta property="og:title" content="媒体报道 - 四川萃雅教育科技有限公司">
+<meta property="og:description" content="四川萃雅教育科技有限公司媒体报道与公司动态，涵盖缤果数字教材、缤果空中课堂、缤果数字非遗等产品的落地实践与行业观察。">
+<meta property="og:image" content="https://cuiya.cn/assets/images/og-cover.jpg">
+<!-- todo-design: og-cover.jpg 待设计 · 见 assets/images/products/DESIGN-MANIFEST.md -->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="四川萃雅教育科技 —— 萃教育之精华，扬文化之正道">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+</head>
+<body>
+<div id="site-nav"></div>
+
+<main id="main" class="shell">
+
+  <section class="phero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="面包屑"><a href="/">首页</a><i>/</i><span>媒体报道</span></nav>
+      <span class="eyebrow" data-reveal style="margin-top:var(--sp-3)">NEWSROOM</span>
+      <h1 data-reveal data-reveal-delay="60" style="font-size:var(--fs-h1);margin-block:var(--sp-2)">媒体报道</h1>
+      <p class="lede" data-reveal data-reveal-delay="120" style="max-width:60ch">
+        教育数字化的每一次落地，都被记录在这里。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="news-grid" id="newsGrid" data-stagger>
+        <div class="skeleton skeleton--card"></div>
+        <div class="skeleton skeleton--card"></div>
+        <div class="skeleton skeleton--card"></div>
+        <div class="skeleton skeleton--card"></div>
+        <div class="skeleton skeleton--card"></div>
+        <div class="skeleton skeleton--card"></div>
+      </div>
+      <nav class="pager" id="newsPager" aria-label="分页"></nav>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script type="module" src="/assets/js/main.js"></script>
+<script type="module">
+  import { fetchList } from '/assets/js/data/api.js';
+  import { initReveal, renderPager, escapeHtml } from '/assets/js/lib/ui.js';
+
+  const LIMIT = 12;
+  const grid = document.getElementById('newsGrid');
+  const pager = document.getElementById('newsPager');
+
+  const cardOf = (n, i) => `
+    <a class="ncard" href="/news-detail.html?id=${encodeURIComponent(n.id)}" data-reveal data-reveal-delay="${(i % 6) * 60}">
+      <div class="ncard__media">${
+        n.cover ? `<img src="${encodeURI(n.cover)}" alt="" width="640" height="360" loading="lazy" decoding="async">` : ''
+      }</div>
+      <div class="ncard__body">
+        <span class="ncard__date num">${n.date}</span>
+        <h3 class="ncard__title">${escapeHtml(n.title)}</h3>
+        <p class="ncard__sub">${escapeHtml(n.subtitle)}</p>
+        <span class="ncard__foot btn btn--text">阅读全文 <span class="arw">→</span></span>
+      </div>
+    </a>`;
+
+  async function load(page) {
+    const url = new URL(location.href);
+    url.searchParams.set('page', page);
+    history.replaceState(null, '', url);
+
+    grid.innerHTML = Array.from({ length: 6 }, () => '<div class="skeleton skeleton--card"></div>').join('');
+
+    try {
+      const { count, list } = await fetchList('news', { page, limit: LIMIT });
+      if (!list.length) {
+        grid.innerHTML = `<div class="state" style="grid-column:1/-1"><h3>暂无内容</h3><p>该页没有可展示的报道。</p></div>`;
+        return;
+      }
+      grid.innerHTML = list.map(cardOf).join('');
+      initReveal();
+      renderPager(pager, {
+        page,
+        pages: Math.ceil(count / LIMIT),
+        total: count,
+        onGo: (p) => {
+          load(p);
+          document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        },
+      });
+    } catch (err) {
+      grid.innerHTML = `<div class="state" style="grid-column:1/-1"><h3>加载失败</h3><p>${escapeHtml(
+        err.message
+      )}，请稍后重试。</p></div>`;
+      pager.innerHTML = '';
+    }
+  }
+
+  const start = Math.max(1, Number(new URL(location.href).searchParams.get('page')) || 1);
+  load(start);
+</script>
+</body>
+</html>

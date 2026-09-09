@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政策文件 - 四川萃雅教育科技有限公司</title>
+<meta name="description" content="教育数字化相关政策文件汇编，涵盖中共中央、国务院、教育部及国家教材委员会关于数字教材、教育信息化与人工智能教育的重要文件。">
+<link rel="canonical" href="https://cuiya.cn/policy.html">
+<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:site_name" content="四川萃雅教育科技">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cuiya.cn/policy.html">
+<meta property="og:title" content="政策文件 - 四川萃雅教育科技有限公司">
+<meta property="og:description" content="教育数字化相关政策文件汇编，涵盖中共中央、国务院、教育部及国家教材委员会关于数字教材、教育信息化与人工智能教育的重要文件。">
+<meta property="og:image" content="https://cuiya.cn/assets/images/og-cover.jpg">
+<!-- todo-design: og-cover.jpg 待设计 · 见 assets/images/products/DESIGN-MANIFEST.md -->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="四川萃雅教育科技 —— 萃教育之精华，扬文化之正道">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+</head>
+<body>
+<div id="site-nav"></div>
+
+<main id="main" class="shell">
+
+  <section class="phero">
+    <div class="wrap">
+      <nav class="crumb" aria-label="面包屑"><a href="/">首页</a><i>/</i><span>政策文件</span></nav>
+      <span class="eyebrow" data-reveal style="margin-top:var(--sp-3)">POLICY</span>
+      <h1 data-reveal data-reveal-delay="60" style="font-size:var(--fs-h1);margin-block:var(--sp-2)">政策文件</h1>
+      <p class="lede" data-reveal data-reveal-delay="120" style="max-width:64ch">
+        教育数字化转型的顶层设计与制度依据，所有产品与服务都以此为准绳。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="filters" id="policyFilters" role="group" aria-label="按发布机构筛选"></div>
+      <div class="stack" id="policyList" style="gap:var(--sp-2)">
+        <div class="skeleton skeleton--row"></div>
+        <div class="skeleton skeleton--row"></div>
+        <div class="skeleton skeleton--row"></div>
+        <div class="skeleton skeleton--row"></div>
+      </div>
+      <nav class="pager" id="policyPager" aria-label="分页"></nav>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script type="module" src="/assets/js/main.js"></script>
+<script type="module">
+  import { fetchList, orgOf } from '/assets/js/data/api.js';
+  import { initReveal, renderPager, escapeHtml, formatDate } from '/assets/js/lib/ui.js';
+
+  const PER = 8;
+  const listEl = document.getElementById('policyList');
+  const filtersEl = document.getElementById('policyFilters');
+  const pagerEl = document.getElementById('policyPager');
+
+  let all = [];
+  let org = '全部';
+
+  const rowOf = (p, i) => `
+    <a class="pcard" href="/policy-detail.html?id=${encodeURIComponent(p.id)}" data-reveal data-reveal-delay="${i * 50}">
+      <div class="pcard__doc" aria-hidden="true">文件</div>
+      <div style="min-width:0">
+        <div class="row row--wrap" style="gap:8px;margin-bottom:8px">
+          <span class="tag tag--cyan">${escapeHtml(orgOf(p.title))}</span>
+          ${p.date ? `<span class="num" style="color:var(--text-3);font-size:.82rem">${formatDate(p.date)}</span>` : ''}
+        </div>
+        <h3 class="pcard__title">${escapeHtml(p.title)}</h3>
+        ${p.subtitle ? `<p class="pcard__sum">${escapeHtml(p.subtitle)}</p>` : ''}
+      </div>
+      <span class="arw" aria-hidden="true" style="color:var(--cyan-400);align-self:center">→</span>
+    </a>`;
+
+  function paint(page) {
+    const rows = org === '全部' ? all : all.filter((p) => orgOf(p.title) === org);
+    const pages = Math.max(1, Math.ceil(rows.length / PER));
+    const cur = Math.min(page, pages);
+    const slice = rows.slice((cur - 1) * PER, cur * PER);
+
+    listEl.innerHTML = slice.length
+      ? slice.map(rowOf).join('')
+      : `<div class="state"><h3>暂无文件</h3><p>该机构下没有可展示的政策文件。</p></div>`;
+    initReveal();
+
+    renderPager(pagerEl, {
+      page: cur,
+      pages,
+      total: rows.length,
+      onGo: (p) => {
+        paint(p);
+        listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      },
+    });
+  }
+
+  function paintFilters() {
+    const orgs = ['全部', ...new Set(all.map((p) => orgOf(p.title)))];
+    filtersEl.innerHTML = orgs
+      .map((o) => `<button class="chip${o === org ? ' is-active' : ''}" data-org="${escapeHtml(o)}">${escapeHtml(o)}</button>`)
+      .join('');
+    filtersEl.querySelectorAll('[data-org]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        org = btn.dataset.org;
+        paintFilters();
+        paint(1);
+      });
+    });
+  }
+
+  try {
+    // 政策仅 16 条，一次取全后本地筛选分页，避免每次切换都打接口
+    const { list } = await fetchList('policy', { page: 1, limit: 50 });
+    all = list;
+    paintFilters();
+    paint(1);
+  } catch (err) {
+    listEl.innerHTML = `<div class="state"><h3>加载失败</h3><p>${escapeHtml(err.message)}，请稍后重试。</p></div>`;
+  }
+</script>
+</body>
+</html>

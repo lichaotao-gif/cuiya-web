@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>媒体报道 - 四川萃雅教育科技有限公司</title>
+<meta name="description" content="四川萃雅教育科技有限公司媒体报道详情。">
+<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:site_name" content="四川萃雅教育科技">
+<meta property="og:type" content="website">
+<meta property="og:title" content="媒体报道 - 四川萃雅教育科技有限公司">
+<meta property="og:description" content="四川萃雅教育科技有限公司媒体报道详情。">
+<meta property="og:image" content="https://cuiya.cn/assets/images/og-cover.jpg">
+<!-- todo-design: og-cover.jpg 待设计 · 见 assets/images/products/DESIGN-MANIFEST.md -->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="四川萃雅教育科技 —— 萃教育之精华，扬文化之正道">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/css/core.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+</head>
+<body>
+<div id="site-nav"></div>
+
+<main id="main" class="shell">
+  <section class="section">
+    <div class="wrap">
+      <nav class="crumb" aria-label="面包屑" style="margin-bottom:var(--sp-4)">
+        <a href="/">首页</a><i>/</i><a href="/news.html">媒体报道</a><i>/</i><span>正文</span>
+      </nav>
+
+      <article class="article" id="article">
+        <div class="skeleton skeleton--row" style="height:44px;margin-bottom:16px"></div>
+        <div class="skeleton skeleton--row" style="height:20px;width:40%;margin-bottom:32px"></div>
+        <div class="skeleton skeleton--row" style="height:280px"></div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script type="module" src="/assets/js/main.js"></script>
+<script type="module">
+  import { fetchOne, fetchList } from '/assets/js/data/api.js';
+  import { escapeHtml, sanitizeHtml, formatDate } from '/assets/js/lib/ui.js';
+
+  const root = document.getElementById('article');
+  const id = new URL(location.href).searchParams.get('id');
+
+  if (!id) {
+    root.innerHTML = `<div class="state"><h3>缺少文章编号</h3><p>请从<a class="btn btn--text" href="/news.html">媒体报道列表</a>进入。</p></div>`;
+  } else {
+    render();
+  }
+
+  async function render() {
+    try {
+      const item = await fetchOne('news', id);
+      if (!item) {
+        root.innerHTML = `<div class="state"><h3>未找到这篇报道</h3><p>它可能已下线。<a class="btn btn--text" href="/news.html">返回列表</a></p></div>`;
+        return;
+      }
+
+      document.title = `${item.title} - 四川萃雅教育科技有限公司`;
+      const meta = [
+        item.date ? `<span class="num">${formatDate(item.date)}</span>` : '',
+        item.source ? `<span>来源：${escapeHtml(item.source)}</span>` : '',
+      ].filter(Boolean).join('');
+
+      root.innerHTML = `
+        <h1 class="article__title">${escapeHtml(item.title)}</h1>
+        ${item.subtitle ? `<p class="lede" style="margin-bottom:var(--sp-3)">${escapeHtml(item.subtitle)}</p>` : ''}
+        <div class="article__meta">${meta}</div>
+        <div class="article__body">${sanitizeHtml(item.content)}</div>
+        ${
+          item.url
+            ? `<p style="margin-top:var(--sp-4)"><a class="btn btn--ghost" href="${encodeURI(item.url)}" target="_blank" rel="noopener noreferrer">查看原文 <span class="arw">→</span></a></p>`
+            : ''
+        }
+        <nav class="article__nav" id="artNav" aria-label="上下篇"></nav>`;
+
+      buildNav(item.id);
+    } catch (err) {
+      root.innerHTML = `<div class="state"><h3>加载失败</h3><p>${escapeHtml(err.message)}，请稍后重试。</p></div>`;
+    }
+  }
+
+  /** 相邻文章：接口无 prev/next，按列表顺序推导 */
+  async function buildNav(currentId) {
+    const nav = document.getElementById('artNav');
+    if (!nav) return;
+    try {
+      const { count } = await fetchList('news', { page: 1, limit: 50 });
+      const pages = Math.ceil(count / 50);
+      let all = [];
+      for (let p = 1; p <= pages; p++) {
+        const { list } = await fetchList('news', { page: p, limit: 50 });
+        all = all.concat(list);
+      }
+      const i = all.findIndex((x) => String(x.id) === String(currentId));
+      if (i < 0) return;
+      const prev = all[i - 1];
+      const next = all[i + 1];
+      nav.innerHTML = [
+        prev
+          ? `<a href="/news-detail.html?id=${encodeURIComponent(prev.id)}"><span>← 上一篇</span><b>${escapeHtml(prev.title)}</b></a>`
+          : `<span></span>`,
+        next
+          ? `<a href="/news-detail.html?id=${encodeURIComponent(next.id)}" style="text-align:right"><span>下一篇 →</span><b>${escapeHtml(next.title)}</b></a>`
+          : `<span></span>`,
+      ].join('');
+    } catch {
+      nav.remove();
+    }
+  }
+</script>
+</body>
+</html>
