@@ -22,15 +22,16 @@
 <meta property="og:image:alt" content="四川萃雅教育科技 —— 萃教育之精华，扬文化之正道">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/assets/css/core.css">
-<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/components.css?v=20260921-8">
 </head>
 <body>
 <div id="site-nav"></div>
 
 <main id="main" class="shell">
 
-  <!-- 1 · 主视觉：Canvas 知识图谱 -->
+  <!-- 1 · 主视觉：实景背景 + Canvas 知识图谱 -->
   <section class="hero">
+    <img class="hero__bg" src="/assets/images/home-hero-bg.jpg" alt="" width="1860" height="845" loading="eager" fetchpriority="high" decoding="async">
     <div class="hero__fallback"></div>
     <canvas class="hero__canvas" id="heroGraph" aria-hidden="true"></canvas>
     <div class="wrap hero__inner">
@@ -75,34 +76,18 @@
   </section>
 
   <!-- 3 · 使命 -->
-  <section class="section section--raise">
-    <div class="wrap">
-      <div class="phero__grid">
-        <div>
-          <span class="eyebrow" data-reveal>MISSION</span>
-          <h2 style="margin-block:var(--sp-2) var(--sp-3)" data-reveal data-reveal-delay="60">使命</h2>
-          <p class="lede" data-reveal data-reveal-delay="120">科技打造创新教育模式</p>
-          <p class="body-text" style="margin-top:var(--sp-3);max-width:56ch" data-reveal data-reveal-delay="180">
-            用科技手段助力学校因材施教与学生个性化发展，让数字化赋能中华文化传承，
-            努力让每个学生都能享受最优质的教育。
-          </p>
-        </div>
-        <div data-reveal data-reveal-delay="140">
-          <div class="mission-visual">
-            <figure class="mission-visual__main">
-              <img src="/assets/images/home-ai-exhibition.jpg" alt="萃雅教育 AI 教育解决方案展会现场" width="1280" height="960" loading="lazy" decoding="async" data-todo-design="待设计">
-              <figcaption><i aria-hidden="true"></i>AI 教育场景落地</figcaption>
-            </figure>
-            <figure class="mission-visual__inset mission-visual__inset--classroom">
-              <img src="/assets/images/home-smart-classroom.jpg" alt="学生在智慧教室参与远程互动课堂" width="1500" height="1125" loading="lazy" decoding="async" data-todo-design="待设计">
-              <figcaption>智慧教室</figcaption>
-            </figure>
-            <figure class="mission-visual__inset mission-visual__inset--platform">
-              <img src="/assets/images/home-learning-platform.jpg" alt="缤果课堂数字教学平台界面" width="1400" height="671" loading="lazy" decoding="async" data-todo-design="待设计">
-              <figcaption>数字教学平台</figcaption>
-            </figure>
-          </div>
-        </div>
+  <section class="section section--raise mission-section">
+    <img class="mission-section__bg" src="/assets/images/home-mission-bg.jpg" alt=""
+         width="1860" height="845" loading="lazy" decoding="async">
+    <div class="wrap mission-section__wrap">
+      <div class="mission-section__content">
+        <span class="eyebrow" data-reveal>MISSION</span>
+        <h2 style="margin-block:var(--sp-2) var(--sp-3)" data-reveal data-reveal-delay="60">使命</h2>
+        <p class="lede" data-reveal data-reveal-delay="120">科技打造创新教育模式</p>
+        <p class="body-text" style="margin-top:var(--sp-3);max-width:56ch" data-reveal data-reveal-delay="180">
+          用科技手段助力学校因材施教与学生个性化发展，让数字化赋能中华文化传承，
+          努力让每个学生都能享受最优质的教育。
+        </p>
       </div>
     </div>
   </section>
@@ -143,8 +128,10 @@
   </section>
 
   <!-- 5 · 产品矩阵（原站首页缺失的统一入口） -->
-  <section class="section section--raise">
-    <div class="wrap">
+  <section class="section section--raise products-section">
+    <img class="products-section__bg" src="/assets/images/home-products-bg.jpg" alt=""
+         width="1862" height="845" loading="lazy" decoding="async">
+    <div class="wrap products-section__wrap">
       <div class="sec-head">
         <span class="eyebrow" data-reveal>PRODUCTS</span>
         <h2 data-reveal data-reveal-delay="60">五大产品线，覆盖大中小学</h2>
@@ -188,26 +175,29 @@
   </section>
 
   <!-- 7 · 研究院 -->
-  <section class="section section--raise">
-    <div class="wrap">
-      <div class="sec-head" style="max-width:72ch">
-        <span class="eyebrow" data-reveal>RESEARCH INSTITUTE</span>
-        <h2 data-reveal data-reveal-delay="60">巴蜀文化数字研究院</h2>
-        <p class="num" style="color:var(--text-3);letter-spacing:.04em" data-reveal data-reveal-delay="100">
-          Bashu Cultural Digital Research Institute
-        </p>
-        <p class="body-text" data-reveal data-reveal-delay="160">
-          由四川文化产业职业学院和四川萃雅教育科技有限公司共同创建的巴蜀文化数字化产教融合平台，
-          致力于巴蜀文化资源数据化、关联数据资产化、数据分享平台化、创新传承智慧化、消费体验场景化。
-        </p>
+  <section class="section section--raise research-section">
+    <img class="research-section__bg" src="/assets/images/home-research-bg.jpg" alt="" width="1860" height="845" loading="lazy" decoding="async">
+    <div class="wrap research-section__wrap">
+      <div class="research-section__content">
+        <div class="sec-head">
+          <span class="eyebrow" data-reveal>RESEARCH INSTITUTE</span>
+          <h2 data-reveal data-reveal-delay="60">巴蜀文化数字研究院</h2>
+          <p class="num" style="color:var(--text-3);letter-spacing:.04em" data-reveal data-reveal-delay="100">
+            Bashu Cultural Digital Research Institute
+          </p>
+          <p class="body-text" data-reveal data-reveal-delay="160">
+            由四川文化产业职业学院和四川萃雅教育科技有限公司共同创建的巴蜀文化数字化产教融合平台，
+            致力于巴蜀文化资源数据化、关联数据资产化、数据分享平台化、创新传承智慧化、消费体验场景化。
+          </p>
+        </div>
+        <div class="row row--wrap research-section__tags" data-reveal>
+          <span class="tag tag--cyan">数字藏品</span>
+          <span class="tag tag--cyan">虚拟数字老师</span>
+          <span class="tag">巴蜀文化全景呈现</span>
+          <span class="tag">成果全民共享</span>
+        </div>
+        <a class="btn btn--ghost" href="/research.html" data-reveal>走进研究院 <span class="arw">→</span></a>
       </div>
-      <div class="row row--wrap" style="gap:12px;margin-bottom:var(--sp-4)" data-reveal>
-        <span class="tag tag--cyan">数字藏品</span>
-        <span class="tag tag--cyan">虚拟数字老师</span>
-        <span class="tag">巴蜀文化全景呈现</span>
-        <span class="tag">成果全民共享</span>
-      </div>
-      <a class="btn btn--ghost" href="/research.html" data-reveal>走进研究院 <span class="arw">→</span></a>
     </div>
   </section>
 

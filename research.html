@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="四川萃雅教育科技 —— 萃教育之精华，扬文化之正道">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/assets/css/core.css">
-<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/components.css?v=20260921-7">
 </head>
 <body>
 <div id="site-nav"></div>
@@ -29,7 +29,9 @@
 <main id="main" class="shell">
 
   <!-- Hero -->
-  <section class="phero">
+  <section class="phero research-hero">
+    <img class="phero__bg" src="/assets/images/home-research-bg.jpg" alt=""
+         width="1860" height="845" loading="eager" decoding="async" fetchpriority="high">
     <div class="wrap">
       <nav class="crumb" aria-label="面包屑"><a href="/">首页</a><i>/</i><span>研究院</span></nav>
       <span class="eyebrow" data-reveal style="margin-top:var(--sp-3)">RESEARCH INSTITUTE</span>
@@ -116,7 +118,7 @@
   </section>
 
   <!-- 数据链路 -->
-  <section class="section">
+  <section class="section pipeline-section">
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow" data-reveal>DATA PIPELINE</span>
@@ -125,37 +127,56 @@
           涵盖采集、加工、交易、分发、呈现五个环节，形成完整闭环。
         </p>
       </div>
-      <div class="flow" data-reveal>
-        <div class="flow__node"><div class="flow__i num">01</div><b>采集</b><span>文化资源汇聚</span></div>
-        <div class="flow__node"><div class="flow__i num">02</div><b>加工</b><span>结构化与标注</span></div>
-        <div class="flow__node"><div class="flow__i num">03</div><b>交易</b><span>数据资产流通</span></div>
-        <div class="flow__node"><div class="flow__i num">04</div><b>分发</b><span>平台化分享</span></div>
-        <div class="flow__node"><div class="flow__i num">05</div><b>呈现</b><span>场景化体验</span></div>
-      </div>
+      <ol class="flow" data-reveal aria-label="巴蜀文化数据处理五个阶段">
+        <li class="flow__node">
+          <div class="flow__i num">01</div>
+          <div class="flow__copy"><small>ACQUIRE</small><b>采集</b><span>文化资源汇聚</span></div>
+        </li>
+        <li class="flow__node">
+          <div class="flow__i num">02</div>
+          <div class="flow__copy"><small>PROCESS</small><b>加工</b><span>结构化与标注</span></div>
+        </li>
+        <li class="flow__node">
+          <div class="flow__i num">03</div>
+          <div class="flow__copy"><small>ASSETIZE</small><b>交易</b><span>数据资产流通</span></div>
+        </li>
+        <li class="flow__node">
+          <div class="flow__i num">04</div>
+          <div class="flow__copy"><small>DISTRIBUTE</small><b>分发</b><span>平台化分享</span></div>
+        </li>
+        <li class="flow__node">
+          <div class="flow__i num">05</div>
+          <div class="flow__copy"><small>EXPERIENCE</small><b>呈现</b><span>场景化体验</span></div>
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- 成果方向 -->
-  <section class="section section--raise">
+  <section class="section section--raise outputs-section">
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow" data-reveal>OUTPUTS</span>
         <h2 data-reveal data-reveal-delay="60">数字化成果</h2>
       </div>
-      <div class="grid g2" data-stagger>
-        <article class="card" data-reveal>
-          <div class="card__icon" aria-hidden="true" style="font-size:1.05rem;font-weight:600">藏</div>
-          <h3 class="card__title">数字藏品</h3>
-          <p class="card__desc">
-            将巴蜀文化资源转化为可确权、可收藏的数字形态，让文化资产以数字方式被记录与传递。
-          </p>
+      <div class="outputs-grid" data-stagger>
+        <article class="output-card output-card--collectible" data-reveal>
+          <img class="output-card__bg" src="/assets/images/research-output-collectible.jpg"
+               alt="巴蜀文化文物三维扫描与数字化展示场景" width="1536" height="1024" loading="lazy" decoding="async">
+          <div class="output-card__content">
+            <span class="output-card__kicker num">DIGITAL COLLECTION · 01</span>
+            <h3>数字藏品</h3>
+            <p>将巴蜀文化资源转化为可确权、可收藏的数字形态，让文化资产以数字方式被记录与传递。</p>
+          </div>
         </article>
-        <article class="card" data-reveal>
-          <div class="card__icon" aria-hidden="true" style="font-size:1.05rem;font-weight:600">师</div>
-          <h3 class="card__title">虚拟数字老师</h3>
-          <p class="card__desc">
-            以虚拟形象承载文化讲解与教学能力，把巴蜀文化的表达带进课堂与文化场景。
-          </p>
+        <article class="output-card output-card--teacher" data-reveal>
+          <img class="output-card__bg" src="/assets/images/research-output-teacher.jpg"
+               alt="虚拟数字老师在文化课堂中讲解巴蜀文化" width="1536" height="1024" loading="lazy" decoding="async">
+          <div class="output-card__content">
+            <span class="output-card__kicker num">VIRTUAL EDUCATOR · 02</span>
+            <h3>虚拟数字老师</h3>
+            <p>以虚拟形象承载文化讲解与教学能力，把巴蜀文化的表达带进课堂与文化场景。</p>
+          </div>
         </article>
       </div>
     </div>
