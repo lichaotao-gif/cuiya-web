@@ -2,9 +2,24 @@
  * 全站导航与页脚 —— 单处定义，各页面注入，避免 12 个 HTML 重复维护。
  */
 
-import { NAV, PRODUCTS, CONTACT } from './data/site.js?v=20260922-6';
+import { NAV, PRODUCTS, CONTACT } from './data/site.js?v=20260922-8';
 
 const LOGO = '<img class="brand__logo" src="/assets/images/logo-on-dark.svg" width="107" height="34" alt="">';
+const THEME_ICON = `<svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+  <circle cx="12" cy="12" r="4"></circle>
+  <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+</svg>
+<svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+  <path d="M20.5 14.2A8.4 8.4 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"></path>
+</svg>`;
+
+function themeOptions(className = '') {
+  return `<div class="theme-options ${className}" aria-label="显示模式">
+    <button type="button" data-theme-option="system" aria-pressed="false"><span>跟随系统</span><i aria-hidden="true">✓</i></button>
+    <button type="button" data-theme-option="light" aria-pressed="false"><span>浅色模式</span><i aria-hidden="true">✓</i></button>
+    <button type="button" data-theme-option="dark" aria-pressed="false"><span>深色模式</span><i aria-hidden="true">✓</i></button>
+  </div>`;
+}
 
 function isActive(href) {
   const path = location.pathname.replace(/index\.html$/, '') || '/';
@@ -47,12 +62,26 @@ function navMarkup() {
     <div class="nav__inner">
       <a class="brand" href="/" aria-label="四川萃雅教育科技 首页">${LOGO}</a>
       <nav aria-label="主导航"><ul class="nav__links">${links}</ul></nav>
-      <button class="nav__burger" id="navBurger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
-        <span></span>
-      </button>
+      <div class="nav__actions">
+        <div class="theme-picker" data-theme-picker>
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="显示模式" aria-expanded="false" aria-controls="themeMenu">
+            ${THEME_ICON}
+          </button>
+          <div class="theme-menu" id="themeMenu">${themeOptions()}</div>
+        </div>
+        <button class="nav__burger" id="navBurger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
-  <div class="drawer" id="navDrawer">${drawerLinks}</div>`;
+  <div class="drawer" id="navDrawer">
+    ${drawerLinks}
+    <div class="drawer__theme">
+      <b>显示模式</b>
+      ${themeOptions('theme-options--mobile')}
+    </div>
+  </div>`;
 }
 
 function footerMarkup() {
