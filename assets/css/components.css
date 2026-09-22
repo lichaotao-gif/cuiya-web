@@ -298,9 +298,9 @@
   color: var(--cyan-400);
 }
 
-/* 章节眉标 */
+/* 英文章节眉标按当前内容策略统一隐藏，保留结构便于后续恢复 */
 .eyebrow {
-  display: inline-flex;
+  display: none;
   align-items: center;
   gap: 10px;
   color: var(--brand-400);
@@ -309,6 +309,10 @@
   text-transform: uppercase;
   font-family: var(--font-num);
 }
+
+.eyebrow + h1,
+.eyebrow + h2,
+.eyebrow + h3 { margin-top: 0 !important; }
 
 .eyebrow::before {
   content: "";
