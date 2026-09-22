@@ -84,18 +84,6 @@ export const DOWNLOAD_GROUPS = [
       },
     ],
   },
-  {
-    name: '缤果学伴',
-    scope: '具身智能教育机器人',
-    sections: [
-      {
-        items: [
-          { os: 'android', label: 'Android/Pad', url: 'https://bingomate.com/download' },
-          { os: 'ios', label: 'iOS/iPadOS', url: 'https://bingomate.com/download' },
-        ],
-      },
-    ],
-  },
 ];
 
 /** 极简 OS 图标（inline SVG，避免额外请求） */

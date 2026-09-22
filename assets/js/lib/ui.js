@@ -205,14 +205,14 @@ export function renderPager(el, { page, pages, total, onGo }) {
   push(pages);
   win.sort((a, b) => a - b);
 
-  let html = `<button class="pager__btn" data-go="${page - 1}"${page === 1 ? ' disabled' : ''} aria-label="上一页">←</button>`;
+  let html = `<button class="pager__btn" type="button" data-go="${page - 1}"${page === 1 ? ' disabled' : ''} aria-label="上一页">←</button>`;
   win.forEach((n, i) => {
     if (i && n - win[i - 1] > 1) html += `<span class="pager__gap" aria-hidden="true">…</span>`;
-    html += `<button class="pager__btn${n === page ? ' is-active' : ''}" data-go="${n}"${
+    html += `<button class="pager__btn${n === page ? ' is-active' : ''}" type="button" data-go="${n}"${
       n === page ? ' aria-current="page"' : ''
     }>${n}</button>`;
   });
-  html += `<button class="pager__btn" data-go="${page + 1}"${page === pages ? ' disabled' : ''} aria-label="下一页">→</button>`;
+  html += `<button class="pager__btn" type="button" data-go="${page + 1}"${page === pages ? ' disabled' : ''} aria-label="下一页">→</button>`;
   html += `<div class="pager__total">第 ${page} / ${pages} 页 · 共 ${total} 条</div>`;
 
   el.innerHTML = html;

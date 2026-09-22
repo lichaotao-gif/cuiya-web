@@ -21,8 +21,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="四川萃雅教育科技 —— 萃教育之精华，扬文化之正道">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/core.css">
-<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/core.css?v=20260922-3">
+<link rel="stylesheet" href="/assets/css/components.css?v=20260922-3">
 </head>
 <body>
 <div id="site-nav"></div>
@@ -60,7 +60,7 @@
       </p>
       <div class="row row--wrap" style="margin-top:var(--sp-4)" data-reveal data-reveal-delay="240">
         <a class="btn btn--primary" href="/download.html">下载客户端 <span class="arw">→</span></a>
-        <a class="btn btn--ghost" href="#contact">预约演示</a>
+        <a class="btn btn--ghost" href="#contact" hidden style="display:none">预约演示</a>
       </div>
     </div>
   </section>
@@ -127,9 +127,9 @@
 
       <div data-tabs data-reveal>
         <div class="tabs__nav" role="tablist" aria-label="数字教材三大平台">
-          <button class="tabs__btn is-active" role="tab" aria-selected="true" data-tab-btn="create">创作平台</button>
-          <button class="tabs__btn" role="tab" aria-selected="false" data-tab-btn="publish">出版平台</button>
-          <button class="tabs__btn" role="tab" aria-selected="false" data-tab-btn="apply">应用平台</button>
+          <button class="tabs__btn is-active" type="button" role="tab" aria-selected="true" data-tab-btn="create">创作平台</button>
+          <button class="tabs__btn" type="button" role="tab" aria-selected="false" data-tab-btn="publish">出版平台</button>
+          <button class="tabs__btn" type="button" role="tab" aria-selected="false" data-tab-btn="apply">应用平台</button>
         </div>
 
         <div class="tabs__panel is-active" role="tabpanel" data-tab-panel="create">
@@ -264,7 +264,7 @@
   </section>
 
   <!-- CTA -->
-  <section class="section" id="contact">
+  <section class="section" id="contact" hidden>
     <div class="wrap">
       <div class="cta" data-reveal>
         <div class="cta__grid">
@@ -309,7 +309,7 @@
 
 <div id="site-footer"></div>
 
-<script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/main.js?v=20260922-3"></script>
 <script type="module">
   import { mountProductNav } from '/assets/js/product-nav.js';
   mountProductNav('bingo-book');

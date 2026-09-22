@@ -21,8 +21,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="四川萃雅教育科技 —— 萃教育之精华，扬文化之正道">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/core.css">
-<link rel="stylesheet" href="/assets/css/components.css?v=20260921-8">
+<link rel="stylesheet" href="/assets/css/core.css?v=20260922-3">
+<link rel="stylesheet" href="/assets/css/components.css?v=20260922-3">
 </head>
 <body>
 <div id="site-nav"></div>
@@ -44,8 +44,8 @@
         让数字化赋能中华文化传承。
       </p>
       <div class="row row--wrap" style="margin-top:var(--sp-4)" data-reveal data-reveal-delay="240">
-        <a class="btn btn--primary" href="/products/bingo-book.html">探索产品矩阵 <span class="arw">→</span></a>
-        <a class="btn btn--ghost" href="#contact">预约演示</a>
+        <a class="btn btn--primary" href="#products">探索产品矩阵 <span class="arw">↓</span></a>
+        <a class="btn btn--ghost" href="#contact" hidden style="display:none">预约演示</a>
       </div>
     </div>
     <div class="hero__scroll" aria-hidden="true"><span>SCROLL</span><i></i></div>
@@ -128,7 +128,7 @@
   </section>
 
   <!-- 5 · 产品矩阵（原站首页缺失的统一入口） -->
-  <section class="section section--raise products-section">
+  <section class="section section--raise products-section" id="products">
     <img class="products-section__bg" src="/assets/images/home-products-bg.jpg" alt=""
          width="1862" height="845" loading="lazy" decoding="async">
     <div class="wrap products-section__wrap">
@@ -143,33 +143,54 @@
     </div>
   </section>
 
-  <!-- 6 · 公司简介 -->
-  <section class="section">
-    <div class="wrap">
-      <div class="phero__grid">
-        <div>
-          <span class="eyebrow" data-reveal>ABOUT</span>
-          <h2 style="margin-block:var(--sp-2) var(--sp-3)" data-reveal data-reveal-delay="60">国有控股的教育科技企业</h2>
-          <p class="body-text" data-reveal data-reveal-delay="120">
-            四川萃雅教育科技有限公司是由新华文轩出版传媒股份有限公司、四川日报网络传媒发展有限公司、
-            中国广电四川网络股份有限公司、四川任你学教育科技有限公司、四川奇迹云科技有限公司
-            共同出资成立的国有控股企业。公司秉承"科技打造创新教育新模式"的使命，用科技手段助力学校
-            因材施教与学生个性化发展，让数字化赋能中华文化传承，努力让每个学生都能享受最优质的教育。
-          </p>
-          <a class="btn btn--text" href="/about.html" style="margin-top:var(--sp-3)" data-reveal data-reveal-delay="180">
-            了解更多 <span class="arw">→</span>
-          </a>
-        </div>
-        <div class="stack" data-reveal data-reveal-delay="140">
-          <h4 style="font-size:1rem;color:var(--text-3);font-weight:500">出资方</h4>
-          <ul class="stack" style="gap:10px">
-            <li class="row" style="gap:12px"><span class="tag tag--brand num">01</span><span style="font-size:.94rem">新华文轩出版传媒股份有限公司</span></li>
-            <li class="row" style="gap:12px"><span class="tag tag--brand num">02</span><span style="font-size:.94rem">四川日报网络传媒发展有限公司</span></li>
-            <li class="row" style="gap:12px"><span class="tag tag--brand num">03</span><span style="font-size:.94rem">中国广电四川网络股份有限公司</span></li>
-            <li class="row" style="gap:12px"><span class="tag tag--brand num">04</span><span style="font-size:.94rem">四川任你学教育科技有限公司</span></li>
-            <li class="row" style="gap:12px"><span class="tag tag--brand num">05</span><span style="font-size:.94rem">四川奇迹云科技有限公司</span></li>
-          </ul>
-        </div>
+  <!-- 6 · 公司简介与出资方 -->
+  <section class="section home-about">
+    <img class="home-about__bg" src="/assets/images/home-about-bg.jpg" alt=""
+         width="1860" height="845" loading="lazy" decoding="async">
+    <div class="wrap home-about__wrap">
+      <div class="home-about__copy">
+        <span class="eyebrow" data-reveal>ABOUT</span>
+        <h2 data-reveal data-reveal-delay="60">国有控股的教育科技企业</h2>
+        <p class="body-text" data-reveal data-reveal-delay="120">
+          四川萃雅教育科技有限公司由五家企业共同出资成立。公司秉承“科技打造创新教育新模式”的使命，
+          用科技手段助力学校因材施教与学生个性化发展，让数字化赋能中华文化传承，
+          努力让每个学生都能享受最优质的教育。
+        </p>
+        <a class="btn btn--text" href="/about.html" data-reveal data-reveal-delay="180">
+          了解更多 <span class="arw">→</span>
+        </a>
+      </div>
+
+      <div class="investors" data-reveal data-reveal-delay="160">
+        <header class="investors__head">
+          <div>
+            <span class="eyebrow">SHAREHOLDERS</span>
+            <h3>五方协同，共建教育数字化</h3>
+          </div>
+          <p>出版、传媒、广电、教育与科技资源共同汇聚</p>
+        </header>
+        <ol class="investor-grid" aria-label="五家出资方">
+          <li class="investor-card">
+            <div class="investor-card__meta"><span class="investor-card__no">01</span><span class="investor-card__type">出版传媒</span></div>
+            <h4>新华文轩出版传媒<br>股份有限公司</h4>
+          </li>
+          <li class="investor-card">
+            <div class="investor-card__meta"><span class="investor-card__no">02</span><span class="investor-card__type">网络传媒</span></div>
+            <h4>四川日报网络传媒<br>发展有限公司</h4>
+          </li>
+          <li class="investor-card">
+            <div class="investor-card__meta"><span class="investor-card__no">03</span><span class="investor-card__type">广电网络</span></div>
+            <h4>中国广电四川网络<br>股份有限公司</h4>
+          </li>
+          <li class="investor-card">
+            <div class="investor-card__meta"><span class="investor-card__no">04</span><span class="investor-card__type">教育科技</span></div>
+            <h4>四川任你学教育科技<br>有限公司</h4>
+          </li>
+          <li class="investor-card">
+            <div class="investor-card__meta"><span class="investor-card__no">05</span><span class="investor-card__type">科技创新</span></div>
+            <h4>四川奇迹云科技<br>有限公司</h4>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
@@ -216,7 +237,7 @@
   </section>
 
   <!-- 9 · 转化 CTA（原站全站缺失） -->
-  <section class="section" id="contact">
+  <section class="section" id="contact" hidden>
     <div class="wrap">
       <div class="cta" data-reveal>
         <div class="cta__grid">
@@ -265,7 +286,7 @@
 
 <div id="site-footer"></div>
 
-<script type="module" src="/assets/js/main.js"></script>
+<script type="module" src="/assets/js/main.js?v=20260922-3"></script>
 <script type="module">
   import { PRODUCTS } from '/assets/js/data/site.js';
   import { fetchList } from '/assets/js/data/api.js';
@@ -281,9 +302,10 @@
         </div>
         <h3 class="card__title">${p.name}</h3>
         <p class="card__desc">${p.blurb}</p>
-        <div class="row row--wrap" style="gap:6px;margin-top:var(--sp-2)">
+        <div class="row row--wrap card__tags" style="gap:6px;margin-top:var(--sp-2)">
           ${p.keys.slice(0, 2).map((k) => `<span class="tag">${k.b}</span>`).join('')}
         </div>
+        <span class="card__cta">查看详情 <span class="arw">→</span></span>
       </a>`).join('');
   }
 

@@ -827,6 +827,7 @@
   overflow: hidden;
   isolation: isolate;
   background: var(--bg-raise);
+  scroll-margin-top: calc(var(--nav-h) + var(--sp-2));
 }
 
 .products-section__bg {
@@ -865,6 +866,8 @@
 }
 
 .products-section .card {
+  display: flex;
+  flex-direction: column;
   border-color: rgba(255, 255, 255, 0.12);
   background: rgba(12, 16, 28, 0.86);
   box-shadow: 0 18px 52px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -875,6 +878,32 @@
 .products-section .card:hover {
   background: rgba(17, 22, 36, 0.94);
   border-color: rgba(255, 122, 24, 0.32);
+}
+
+.card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: 9px;
+  min-height: 44px;
+  margin-top: var(--sp-3);
+  padding: 0 16px;
+  border: 1px solid rgba(255, 154, 77, 0.28);
+  border-radius: var(--radius-btn);
+  background: rgba(255, 122, 24, 0.08);
+  color: var(--brand-400);
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+
+.card__tags { margin-bottom: auto; }
+
+.products-section .card:hover .card__cta {
+  color: #fff;
+  border-color: rgba(255, 154, 77, 0.56);
+  background: rgba(255, 122, 24, 0.16);
 }
 
 @media (max-width: 900px) {
@@ -1061,6 +1090,198 @@
   .research-section { min-height: 680px; }
   .research-section__bg { object-position: 32% center; }
   .research-section__content { padding-top: 270px; }
+}
+
+/* 首页公司简介：国资协同背景 + 五方等权出资方卡片 */
+.home-about {
+  position: relative;
+  min-height: clamp(820px, 64vw, 980px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.home-about__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(8, 11, 20, 0.98) 0%, rgba(8, 11, 20, 0.91) 38%, rgba(8, 11, 20, 0.42) 66%, rgba(8, 11, 20, 0.12) 100%),
+    linear-gradient(180deg, var(--bg-base) 0%, transparent 17%, rgba(8, 11, 20, 0.18) 52%, rgba(8, 11, 20, 0.96) 82%, var(--bg-base) 100%);
+}
+
+.home-about::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(680px 420px at 82% 32%, rgba(56, 189, 248, 0.08), transparent 72%),
+    radial-gradient(560px 360px at 30% 74%, rgba(255, 122, 24, 0.08), transparent 74%);
+}
+
+.home-about__copy {
+  max-width: 650px;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.38);
+}
+
+.home-about__copy h2 {
+  margin-block: var(--sp-2) var(--sp-3);
+}
+
+.home-about__copy .btn { margin-top: var(--sp-3); }
+
+.investors {
+  margin-top: var(--sp-6);
+  padding: var(--sp-4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(9, 13, 24, 0.72);
+  box-shadow: var(--inset-hi-2), 0 28px 70px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(20px) saturate(120%);
+}
+
+.investors__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+}
+
+.investors__head h3 {
+  margin-top: 8px;
+  font-size: clamp(1.35rem, 2.1vw, 1.9rem);
+}
+
+.investors__head p {
+  max-width: none;
+  color: var(--text-2);
+  font-size: 0.9rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.investor-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.investor-card {
+  position: relative;
+  min-height: 166px;
+  padding: var(--sp-3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-card);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: transform var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease), background var(--t-mid) var(--ease);
+}
+
+.investor-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand-500), rgba(56, 189, 248, 0.65), transparent);
+}
+
+.investor-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 154, 77, 0.3);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 122, 24, 0.045));
+}
+
+.investor-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: var(--sp-3);
+}
+
+.investor-card__no {
+  color: var(--brand-400);
+  font-family: var(--font-num);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.investor-card__type {
+  color: var(--text-3);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.investor-card h4 {
+  font-size: clamp(0.9rem, 1.05vw, 1rem);
+  font-weight: 560;
+  line-height: 1.65;
+}
+
+@media (max-width: 1100px) {
+  .home-about { min-height: 1120px; }
+
+  .investor-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .investor-card { grid-column: span 2; }
+  .investor-card:nth-child(4) { grid-column: 2 / span 2; }
+  .investor-card:nth-child(5) { grid-column: 4 / span 2; }
+}
+
+@media (max-width: 700px) {
+  .home-about {
+    min-height: 1480px;
+    padding-top: 360px;
+  }
+
+  .home-about__bg { object-position: 70% top; }
+
+  .home-about::before {
+    background:
+      linear-gradient(180deg, rgba(8, 11, 20, 0.1) 0%, rgba(8, 11, 20, 0.7) 27%, rgba(8, 11, 20, 0.98) 46%, var(--bg-base) 100%),
+      linear-gradient(90deg, rgba(8, 11, 20, 0.72), rgba(8, 11, 20, 0.08));
+  }
+
+  .investors {
+    margin-top: var(--sp-5);
+    padding: var(--sp-3);
+  }
+
+  .investors__head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .investors__head p {
+    max-width: none;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .investor-grid { grid-template-columns: minmax(0, 1fr); }
+  .investor-card,
+  .investor-card:nth-child(4),
+  .investor-card:nth-child(5) { grid-column: auto; }
+  .investor-card { min-height: 142px; }
 }
 
 /* 关于我们 · 公司简介：移除右侧独立图，改为全幅企业场景 */

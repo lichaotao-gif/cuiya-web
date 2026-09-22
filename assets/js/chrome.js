@@ -47,7 +47,7 @@ function navMarkup() {
     <div class="nav__inner">
       <a class="brand" href="/" aria-label="四川萃雅教育科技 首页">${LOGO}</a>
       <nav aria-label="主导航"><ul class="nav__links">${links}</ul></nav>
-      <button class="nav__burger" id="navBurger" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
+      <button class="nav__burger" id="navBurger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
         <span></span>
       </button>
     </div>
