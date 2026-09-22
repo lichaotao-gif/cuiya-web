@@ -2,7 +2,7 @@
  * 产品页尾部的同级产品切换条。
  * 每个产品页只需给出当前 slug。
  */
-import { PRODUCTS } from './data/site.js';
+import { PRODUCTS } from './data/site.js?v=20260922-6';
 import { initReveal } from './lib/ui.js';
 
 export function mountProductNav(currentSlug, host = document.getElementById('prodNav')) {

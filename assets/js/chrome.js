@@ -2,7 +2,7 @@
  * 全站导航与页脚 —— 单处定义，各页面注入，避免 12 个 HTML 重复维护。
  */
 
-import { NAV, PRODUCTS, CONTACT } from './data/site.js';
+import { NAV, PRODUCTS, CONTACT } from './data/site.js?v=20260922-6';
 
 const LOGO = '<img class="brand__logo" src="/assets/images/logo-on-dark.svg" width="107" height="34" alt="">';
 

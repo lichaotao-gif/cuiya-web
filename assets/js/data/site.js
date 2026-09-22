@@ -10,7 +10,7 @@ export const CONTACT = {
   icpUrl: 'https://beian.miit.gov.cn',
 };
 
-export const PRODUCTS = [
+const PRODUCT_CATALOG = [
   {
     slug: 'bingo-book',
     name: '缤果数字教材',
@@ -74,6 +74,7 @@ export const PRODUCTS = [
   {
     slug: 'bingo-mate-app',
     name: '缤果学伴',
+    visible: false,
     tagline: 'AI 陪伴每一次成长',
     sub: '面向教育的具身智能机器人，AI驱动的智能教师',
     icon: '伴',
@@ -88,6 +89,9 @@ export const PRODUCTS = [
   },
 ];
 
+/** 暂未开放的产品保留资料，但不进入任何公开产品入口。 */
+export const PRODUCTS = PRODUCT_CATALOG.filter((product) => product.visible !== false);
+
 export const NAV = [
   { label: '首页', href: '/' },
   { label: '关于我们', href: '/about.html' },
@@ -101,7 +105,7 @@ export const NAV = [
 export const STATS = [
   { val: 5, suffix: '家', label: '国有资本共同出资成立' },
   { val: 100, suffix: '+', label: '所学校提供课程支持' },
-  { val: 5, suffix: '大', label: '核心产品线覆盖大中小学' },
+  { val: 4, suffix: '大', label: '核心产品线覆盖大中小学' },
   { val: 7, suffix: '类', label: '教学客户端全平台支持' },
 ];
 

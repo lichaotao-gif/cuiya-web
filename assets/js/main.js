@@ -2,7 +2,7 @@
  * 全站入口。各页面只需 <script type="module" src="/assets/js/main.js">。
  */
 
-import { mountChrome } from './chrome.js';
+import { mountChrome } from './chrome.js?v=20260922-7';
 import { initReveal, initCounters, initSpotlight, initTabs, initStory, stagger } from './lib/ui.js';
 import { initHeroGraph } from './hero-graph.js';
 import { initContactForm } from './lib/contact.js';
