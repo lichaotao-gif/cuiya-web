@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>关于我们 - 四川萃雅教育科技有限公司</title>
-<meta name="description" content="四川萃雅教育科技有限公司是由新华文轩、四川日报网络传媒、中国广电四川网络、四川任你学、四川奇迹云共同出资成立的国有控股企业，以科技打造创新教育新模式。">
+<meta name="description" content="四川萃雅教育科技有限公司是一家国有控股的教育科技企业，汇聚出版、传媒、广电、教育与科技资源，以科技打造创新教育新模式。">
 <link rel="canonical" href="https://cuiya.cn/about.html">
 <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/images/favicon-32.png" sizes="32x32" type="image/png">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cuiya.cn/about.html">
 <meta property="og:title" content="关于我们 - 四川萃雅教育科技有限公司">
-<meta property="og:description" content="四川萃雅教育科技有限公司是由新华文轩、四川日报网络传媒、中国广电四川网络、四川任你学、四川奇迹云共同出资成立的国有控股企业，以科技打造创新教育新模式。">
+<meta property="og:description" content="四川萃雅教育科技有限公司是一家国有控股的教育科技企业，汇聚出版、传媒、广电、教育与科技资源，以科技打造创新教育新模式。">
 <meta property="og:image" content="https://cuiya.cn/assets/images/og-cover.jpg">
 <!-- todo-design: og-cover.jpg 待设计 · 见 assets/images/products/DESIGN-MANIFEST.md -->
 <meta property="og:image:width" content="1200">
@@ -75,9 +75,8 @@
         <span class="eyebrow" data-reveal>COMPANY PROFILE</span>
         <h2 data-reveal data-reveal-delay="60">公司简介</h2>
         <p class="body-text" data-reveal data-reveal-delay="120">
-          四川萃雅教育科技有限公司是由新华文轩出版传媒股份有限公司、四川日报网络传媒发展有限公司、
-          中国广电四川网络股份有限公司、四川任你学教育科技有限公司、四川奇迹云科技有限公司共同出资成立的
-          国有控股企业。萃雅教育"科技打造创新教育新模式"的使命，用科技手段助力学校因材施教与学生个性化发展，
+          四川萃雅教育科技有限公司是一家国有控股的教育科技企业，汇聚出版、传媒、广电、教育与科技等多元资源。
+          萃雅教育秉承“科技打造创新教育新模式”的使命，用科技手段助力学校因材施教与学生个性化发展，
           让数字化赋能文化传承和教育公平，努力让每个学生都能享受最优质的教育。
         </p>
         <p class="body-text" data-reveal data-reveal-delay="180">
@@ -89,17 +88,17 @@
     </div>
   </section>
 
-  <!-- 出资方 -->
+  <!-- 多元资源协同 -->
   <section class="section">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow" data-reveal>SHAREHOLDERS</span>
-        <h2 data-reveal data-reveal-delay="60">五家出资方</h2>
+        <span class="eyebrow" data-reveal>RESOURCE MATRIX</span>
+        <h2 data-reveal data-reveal-delay="60">多元资源协同</h2>
         <p class="lede" data-reveal data-reveal-delay="120">
           出版传媒、党媒网络、广电网络与教育科技力量汇聚，构成内容与技术的双重保障。
         </p>
       </div>
-      <div class="grid g3" id="shGrid" data-stagger></div>
+      <div class="grid g3" id="resourceGrid" data-stagger></div>
     </div>
   </section>
 
@@ -183,14 +182,15 @@
 
 <script type="module" src="/assets/js/main.js?v=20260922-3"></script>
 <script type="module">
-  import { SHAREHOLDERS, CULTURE, PRODUCTS } from '/assets/js/data/site.js';
+  import { RESOURCE_MATRIX, CULTURE, PRODUCTS } from '/assets/js/data/site.js?v=20260922-4';
   import { initReveal } from '/assets/js/lib/ui.js';
 
-  document.getElementById('shGrid').innerHTML = SHAREHOLDERS.map(
-    (name, i) => `
+  document.getElementById('resourceGrid').innerHTML = RESOURCE_MATRIX.map(
+    (item, i) => `
       <article class="card" data-reveal data-reveal-delay="${i * 60}">
         <div class="card__no num">0${i + 1}</div>
-        <h3 class="card__title" style="font-size:1.05rem;line-height:1.6">${name}</h3>
+        <h3 class="card__title">${item.name}</h3>
+        <p class="card__desc">${item.desc}</p>
       </article>`
   ).join('');
 
